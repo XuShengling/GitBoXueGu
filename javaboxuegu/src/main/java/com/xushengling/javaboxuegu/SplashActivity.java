@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.view.FrameMetrics;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
