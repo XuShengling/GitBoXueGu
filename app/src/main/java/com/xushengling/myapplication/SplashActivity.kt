@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
-import com.XuShengling.myapplication.R
-import com.xushengling.gitboxuegu.MainActivity
+
+
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
 

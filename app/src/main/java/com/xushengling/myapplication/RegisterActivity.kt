@@ -1,4 +1,4 @@
-package com.xushengling.gitboxuegu
+package com.xushengling.myapplication
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import com.XuShengling.myapplication.R
-import com.xushengling.myapplication.MD5Utils
+
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.main_title_bar.*
 
