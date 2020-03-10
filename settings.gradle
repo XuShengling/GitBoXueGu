@@ -1,0 +1,3 @@
+rootProject.name='GitBoXueGu'
+include ':app'
+include ':javaboxuegu'

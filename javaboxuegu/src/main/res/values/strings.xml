@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JavaBoXueGu</string>
+    <string name="username">请输入用户名</string>
+    <string name="userRegister">注   册</string>
+    <string name="userPsw">请输入密码</string>
+    <string name="userPswAgain">请再次输入密码</string>
+</resources>
