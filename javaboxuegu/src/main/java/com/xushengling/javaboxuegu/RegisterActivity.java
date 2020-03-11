@@ -45,12 +45,12 @@ public class RegisterActivity extends AppCompatActivity {
                 toast("请再次输入密码");
             }else if (!mUserPsw.equals(mUserAgain)){
                 toast("两次密码不一致");
-            }if (isExistUserName(mUserName)){
+            }else if (isExistUserName(mUserName)){
               toast("此用户名已存在");
-            } else {
+            }else {
                 toast("注册成功");
                 saveRegisterInfo(mUserName,mUserPsw);
-                setResult(RESULT_OK,new Intent().putExtra("mUserName",mUserName));
+                setResult(RESULT_OK,new Intent().putExtra("userName",mUserName));
                 this.finish();
             }
         });
