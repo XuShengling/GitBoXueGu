@@ -1,4 +1,4 @@
-package com.xushengling.javaboxuegu;
+package com.xushengling.javaboxuegu.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.xushengling.javaboxuegu.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

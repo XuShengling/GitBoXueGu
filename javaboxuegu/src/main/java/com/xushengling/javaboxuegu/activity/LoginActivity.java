@@ -1,55 +1,63 @@
-package com.xushengling.javaboxuegu;
+package com.xushengling.javaboxuegu.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.xushengling.javaboxuegu.utils.MD5Utils;
+import com.xushengling.javaboxuegu.R;
+
 public class LoginActivity extends AppCompatActivity {
-    private String mUserName, mPsw, mSpPsw;
+    private String userName, psw, spPsw;
     private EditText mUserNameEt, mUserPswEt;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_login);
         initView();
     }
 
     private void initView() {
         TextView mMainTitleTv = findViewById(R.id.titleTv);
-        mMainTitleTv.setText("登录");
+        mMainTitleTv.setText(R.string.login_activity);
         TextView backTv = findViewById(R.id.backTv);
         backTv.setOnClickListener(i -> this.finish());
         TextView register = findViewById(R.id.registerTv);
         register.setOnClickListener(i -> startActivityForResult(new Intent(this, RegisterActivity.class), 1));
-
+        //注册  findPswTv
         TextView loginBtn = findViewById(R.id.btn_login);
         mUserNameEt=findViewById(R.id.et_user_name);
         mUserPswEt=findViewById(R.id.et_psw);
         register.setOnClickListener(i ->startActivityForResult(new Intent(this,RegisterActivity.class),1));
         loginBtn.setOnClickListener(i ->{
-            mUserName=mUserNameEt.getText().toString().trim();
-            mPsw=mUserPswEt.getText().toString().trim();
-            String md5=MD5Utils.md5(mPsw);
-            mSpPsw=getSharedPreferences("loginInfo",MODE_PRIVATE).getString(mUserName,"");
-            if (TextUtils.isEmpty(mUserName)){
+            userName=mUserNameEt.getText().toString().trim();
+            psw=mUserPswEt.getText().toString().trim();
+            String md5= MD5Utils.md5(psw);
+            spPsw=getSharedPreferences("loginInfo",MODE_PRIVATE).getString(userName,"");
+            if (TextUtils.isEmpty(userName)){
                 toast("请输入用户名");
-            }else if (TextUtils.isEmpty(mPsw)){
+            }else if (TextUtils.isEmpty(psw)){
                 toast("请输入密码");
-            }else if(md5.equals(mSpPsw)){
+            }else if(md5.equals(spPsw)){
                 toast("登陆成功");
-                saveLoginStatus(true,mUserName);
-                startActivity(new Intent(this,MainActivity.class));
+                saveLoginStatus(true,userName);
+                startActivity(new Intent(this, MainActivity.class));
                 setResult(RESULT_OK,new Intent().putExtra("isLogin",true));
                 this.finish();
-            } else if (!TextUtils.isEmpty(mSpPsw)&&!md5.equals(mSpPsw)){
+            } else if (!TextUtils.isEmpty(spPsw)&&!md5.equals(spPsw)){
                 toast("用户名密码不一致");
             }else {
                 toast("此账户不存在");

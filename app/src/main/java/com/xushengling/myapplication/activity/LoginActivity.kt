@@ -1,4 +1,4 @@
-package com.xushengling.myapplication
+package com.xushengling.myapplication.activity
 
 import android.app.Activity
 import android.content.Context
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import com.xushengling.myapplication.R
+import com.xushengling.myapplication.utils.MD5Utils
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.main_title_bar.*
 
@@ -19,10 +21,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        titleTv.text="登录"
+        titleTv.text=getString(R.string.login_activity)
         backTv.setOnClickListener { this.finish()}
         registerTv.setOnClickListener {
-            startActivityForResult(Intent(this,RegisterActivity::class.java),1)
+            startActivityForResult(Intent(this,
+                RegisterActivity::class.java),1)
         }
         findPswTv.setOnClickListener {
             //未创建
@@ -30,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
             val userName=et_user_name.text.toString().trim()
             val psw=et_psw.text.toString().trim()
-            val md5=MD5Utils.md5(psw)
+            val md5= MD5Utils.md5(psw)
             val spPsw=getSharedPreferences("loginInfo", Context.MODE_PRIVATE).getString(userName,"")!!
             when{
                 TextUtils.isEmpty(userName) -> {
@@ -41,7 +44,8 @@ class LoginActivity : AppCompatActivity() {
                 }
                 md5 == spPsw->{
                     toast("登陆成功")
-                    startActivity(Intent(this,MainActivity::class.java))
+                    startActivity(Intent(this,
+                        MainActivity::class.java))
                     saveLoginStatus(true,userName)
                     setResult(Activity.RESULT_OK,Intent().putExtra("isLogin",true))
                     this.finish()

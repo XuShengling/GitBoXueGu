@@ -1,4 +1,4 @@
-package com.xushengling.myapplication
+package com.xushengling.myapplication.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import com.xushengling.myapplication.R
+import com.xushengling.myapplication.utils.MD5Utils
 
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.main_title_bar.*
@@ -23,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        titleTv.text="注册"
+        titleTv.text=getString(R.string.register_activity)
         mainTitleBar.setBackgroundColor(Color.TRANSPARENT)
         backTv.setOnClickListener { this.finish() }
         registerBtn.setOnClickListener {

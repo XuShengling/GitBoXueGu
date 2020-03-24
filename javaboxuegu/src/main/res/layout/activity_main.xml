@@ -4,15 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <include layout="@layout/main_title_bar" />
+
+    <FrameLayout
+        android:id="@+id/main_body"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/main_btn_bar"
+        app:layout_constraintTop_toBottomOf="@+id/mainTitleBar" />
+
+    <LinearLayout
+        android:id="@+id/main_btn_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="3sp"
+        android:background="#F2F2F2"
+        android:baselineAligned="false"
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <LinearLayout
+            android:id="@+id/main_btn_bar_course_ll"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/main_btn_bar_course_btn"
+                android:layout_width="27sp"
+                android:layout_height="27sp"
+                android:src="@drawable/main_course_icon"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/main_btn_bar_course_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3sp"
+                android:gravity="center_horizontal"
+                android:text="@string/main_course"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_btn_bar_exercises_ll"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/main_btn_bar_exercises_btn"
+                android:layout_width="27sp"
+                android:layout_height="27sp"
+                android:src="@drawable/main_exercises_icon"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/main_btn_bar_exercises_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3sp"
+                android:gravity="center_horizontal"
+                android:text="@string/main_exercises"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_btn_bar_my_ll"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/main_btn_bar_my_btn"
+                android:layout_width="27sp"
+                android:layout_height="27sp"
+                android:src="@drawable/main_my_icon"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/main_btn_bar_my_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3sp"
+                android:gravity="center_horizontal"
+                android:text="@string/main_my"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

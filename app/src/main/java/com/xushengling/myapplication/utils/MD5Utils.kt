@@ -1,4 +1,4 @@
-package com.xushengling.myapplication
+package com.xushengling.myapplication.utils
 
 import java.security.MessageDigest
 import kotlin.experimental.and

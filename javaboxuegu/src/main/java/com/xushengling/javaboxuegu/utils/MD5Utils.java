@@ -1,4 +1,4 @@
-package com.xushengling.javaboxuegu;
+package com.xushengling.javaboxuegu.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -10,8 +10,8 @@ import java.security.NoSuchAlgorithmException;
  * @Author: 徐圣领
  * @CreateDate: 2020/3/9 15:18
  */
-class MD5Utils {
-    static String md5(String text) {
+public class MD5Utils {
+    public static String md5(String text) {
         MessageDigest digest;
         try {
             digest = MessageDigest.getInstance("mu5");
