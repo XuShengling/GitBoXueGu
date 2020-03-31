@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void initView() {
         TextView mTitleTv = findViewById(R.id.titleTv);
-        mTitleTv.setText(R.string.register_activity);
+        mTitleTv.setText(R.string.user_login);
         TextView mBackBtn = findViewById(R.id.backTv);
         TextView mRegisterBtn = findViewById(R.id.registerBtn);
         mUserNameEt=findViewById(R.id.userNameEt);
@@ -41,19 +41,19 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(i ->{
             getEditString();
             if (TextUtils.isEmpty(userName)){
-                toast("请输入用户名");
+                toast(getString(R.string.userName));
             }else if (TextUtils.isEmpty(psw)){
-                toast("请输入密码");
+                toast(getString(R.string.psw));
             }else if (TextUtils.isEmpty(pswAgain)){
-                toast("请再次输入密码");
+                toast(getString(R.string.spPswPsw));
             }else if (!psw.equals(pswAgain)){
-                toast("两次密码不一致");
+                toast(getString(R.string.spPswPsw));
             }else if (isExistUserName(userName)){
-              toast("此用户名已存在");
+              toast(getString(R.string.noUser));
             }else {
-                toast("注册成功");
+                toast(getString(R.string.registerUser));
                 saveRegisterInfo(userName,psw);
-                setResult(RESULT_OK,new Intent().putExtra("userName",userName));
+                setResult(RESULT_OK,new Intent().putExtra(getString(R.string.userNameLogin),userName));
                 this.finish();
             }
         });
@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private boolean isExistUserName(String userName){
         boolean has_userName=false;
-        SharedPreferences sp=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        SharedPreferences sp=getSharedPreferences(getString(R.string.loginInfo),MODE_PRIVATE);
         String spPsw=sp.getString(userName,"");
         if (!TextUtils.isEmpty(spPsw)){
             has_userName=true;
@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void saveRegisterInfo(String userName,String psw){
         String md5= MD5Utils.md5(psw);
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences(getString(R.string.loginInfo),MODE_PRIVATE);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor=sp.edit();
         editor.putString(userName,md5);
         editor.apply();

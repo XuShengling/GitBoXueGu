@@ -34,7 +34,7 @@
         android:maxLines="1"
         android:paddingStart="10sp"
         android:paddingLeft="10sp"
-        android:textColor="#000000"
+        android:textColor="@color/colorEdit"
         android:textColorHint="#a3a3a3"
         tools:ignore="Autofill,RtlSymmetry,TextFields" />
 
@@ -55,7 +55,7 @@
         android:maxLines="1"
         android:paddingStart="10sp"
         android:paddingLeft="10sp"
-        android:textColor="#000000"
+        android:textColor="@color/colorEdit"
         android:textColorHint="#a3a3a3"
         tools:ignore="Autofill,RtlSymmetry" />
 

@@ -25,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        titleTv.text=getString(R.string.register_activity)
+        titleTv.text=getString(R.string.user_login)
         mainTitleBar.setBackgroundColor(Color.TRANSPARENT)
         backTv.setOnClickListener { this.finish() }
         registerBtn.setOnClickListener {

@@ -12,10 +12,10 @@ import android.content.Context
  */
 object AnalysisUtils {
     /**
-     * 从SharedPreferences中读取登录用户名
+     * 从 SharedPreferences 中读取登录用户名
      */
     fun readLoginUserName(context: Context): String? {
-        val sp=context.getSharedPreferences("loginInfo",Context.MODE_PRIVATE)
-        return sp.getString("loginUserName","")
+        val sp = context.getSharedPreferences("loginInfo", Context.MODE_PRIVATE)
+        return sp.getString("LoginUserName", "")
     }
 }

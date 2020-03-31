@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JavaBoXueGu</string>
+    <string name="app_name">GitBoXueGu</string>
     <string name="username">请输入用户名</string>
     <string name="userRegister">注   册</string>
     <string name="userPsw">请输入密码</string>
@@ -12,6 +12,18 @@
     <string name="main_exercises_tv">博学谷习题</string>
     <string name="main_my">我</string>
     <string name="main_activity">博学谷课程</string>
-    <string name="login_activity">登录</string>
-    <string name="register_activity">登录</string>
+    <string name="tv_user_name">点击登录</string>
+    <string name="course_history_tv">播放记录</string>
+    <string name="userName">请输入用户名</string>
+    <string name="psw">请输入密码</string>
+    <string name="spPsw">登陆成功</string>
+    <string name="spPswPsw">输入用户名和密码不一致</string>
+    <string name="noUser">此用户名不存在</string>
+    <string name="keyDown">再按一次退出博学谷</string>
+    <string name="registerUser">注册成功</string>
+    <string name="userNameLogin">userName</string>
+    <string name="modify_psw_tv">修改密码</string>
+    <string name="security_setting_tv">设置密保</string>
+    <string name="exit_login_tv">退出登录</string>
+    <string name="setting">设置</string>
 </resources>

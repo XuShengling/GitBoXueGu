@@ -12,9 +12,9 @@
         android:id="@+id/main_body"
         android:layout_width="match_parent"
         android:layout_height="0sp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/main_btn_bar"
         app:layout_constraintTop_toBottomOf="@+id/mainTitleBar" />
+
 
     <LinearLayout
         android:id="@+id/main_btn_bar"
@@ -48,7 +48,7 @@
                 android:layout_marginTop="3sp"
                 android:gravity="center_horizontal"
                 android:text="@string/main_course"
-                android:textColor="#666666"
+                android:textColor="@color/colorText"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -75,7 +75,7 @@
                 android:layout_marginTop="3sp"
                 android:gravity="center_horizontal"
                 android:text="@string/main_exercises"
-                android:textColor="#666666"
+                android:textColor="@color/colorText"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -102,7 +102,7 @@
                 android:layout_marginTop="3sp"
                 android:gravity="center_horizontal"
                 android:text="@string/main_my"
-                android:textColor="#666666"
+                android:textColor="@color/colorText"
                 android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources >
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorText">#666666</color>
+    <color name="colorBar">#30B4FF</color>
+    <color name="colorEdit">#000000</color>
+    <color name="colorHint">#a3a3a3</color>
+    <color name="colorView">#E3E3E3</color>
+    <color name="rlBackground">#F7F8F8</color>
+    <color name="rlBackgasfqround">#FFFFFF</color>
+
 </resources>

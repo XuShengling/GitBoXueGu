@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initView() {
         TextView mMainTitleTv = findViewById(R.id.titleTv);
-        mMainTitleTv.setText(R.string.login_activity);
+        mMainTitleTv.setText(R.string.user_login);
         TextView backTv = findViewById(R.id.backTv);
         backTv.setOnClickListener(i -> this.finish());
         TextView register = findViewById(R.id.registerTv);
@@ -48,19 +48,19 @@ public class LoginActivity extends AppCompatActivity {
             String md5= MD5Utils.md5(psw);
             spPsw=getSharedPreferences("loginInfo",MODE_PRIVATE).getString(userName,"");
             if (TextUtils.isEmpty(userName)){
-                toast("请输入用户名");
+                toast(getString(R.string.userName));
             }else if (TextUtils.isEmpty(psw)){
-                toast("请输入密码");
+                toast(getString(R.string.psw));
             }else if(md5.equals(spPsw)){
-                toast("登陆成功");
+                toast(getString(R.string.spPsw));
                 saveLoginStatus(true,userName);
                 startActivity(new Intent(this, MainActivity.class));
                 setResult(RESULT_OK,new Intent().putExtra("isLogin",true));
                 this.finish();
             } else if (!TextUtils.isEmpty(spPsw)&&!md5.equals(spPsw)){
-                toast("用户名密码不一致");
+                toast(getString(R.string.spPswPsw));
             }else {
-                toast("此账户不存在");
+                toast(getString(R.string.noUser));
             }
         });
     }

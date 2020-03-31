@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        titleTv.text=getString(R.string.login_activity)
+        titleTv.text=getString(R.string.user_login)
         backTv.setOnClickListener { this.finish()}
         registerTv.setOnClickListener {
             startActivityForResult(Intent(this,
@@ -37,13 +37,13 @@ class LoginActivity : AppCompatActivity() {
             val spPsw=getSharedPreferences("loginInfo", Context.MODE_PRIVATE).getString(userName,"")!!
             when{
                 TextUtils.isEmpty(userName) -> {
-                    toast("请输入用户名")
+                    toast(getString(R.string.userName))
                 }
                 TextUtils.isEmpty(psw) -> {
-                    toast("请输入密码")
+                    toast(getString(R.string.psw))
                 }
                 md5 == spPsw->{
-                    toast("登陆成功")
+                    toast(getString(R.string.spPsw))
                     startActivity(Intent(this,
                         MainActivity::class.java))
                     saveLoginStatus(true,userName)
@@ -51,10 +51,10 @@ class LoginActivity : AppCompatActivity() {
                     this.finish()
                 }
                 !TextUtils.isEmpty(spPsw)&& md5 != spPsw ->{
-                    toast("输入用户名和密码不一致")
+                    toast(getString(R.string.spPswPsw))
                 }
                 else ->{
-                    toast("此用户名不存在")
+                    toast(getString(R.string.noUser))
                 }
 
             }
