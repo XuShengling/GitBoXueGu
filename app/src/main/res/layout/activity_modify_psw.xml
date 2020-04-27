@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_bg"
+    android:orientation="vertical"
+    tools:context=".activity.ModifyPswActivity">
+
+    <include layout="@layout/main_title_bar" />
+
+    <EditText
+        android:id="@+id/et_original_psw"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_marginStart="35sp"
+        android:layout_marginTop="25sp"
+        android:layout_marginEnd="35sp"
+        android:background="@drawable/register_user_name_bg"
+        android:drawableStart="@drawable/psw_icon"
+        android:drawablePadding="10sp"
+        android:gravity="center_vertical"
+        android:hint="@string/et_original_psw"
+        android:maxLines="1"
+        android:paddingStart="10sp"
+        android:textColor="@color/colorEdit"
+        android:textColorHint="#a3a3a3"
+        tools:ignore="Autofill,RtlSymmetry,TextFields" />
+
+    <EditText
+        android:id="@+id/et_psw_again"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_marginStart="35sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginEnd="35sp"
+        android:background="@drawable/register_user_name_bg"
+        android:drawableStart="@drawable/psw_icon"
+        android:drawableLeft="@drawable/psw_icon"
+        android:drawablePadding="10sp"
+        android:gravity="center_vertical"
+        android:hint="@string/et_psw_again"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingStart="10sp"
+        android:paddingLeft="10sp"
+        android:textColor="@color/colorEdit"
+        android:textColorHint="#a3a3a3"
+        tools:ignore="Autofill,RtlHardcoded,RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/et_new_psw_again"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_marginStart="35sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginEnd="35sp"
+        android:background="@drawable/register_user_name_bg"
+        android:drawableStart="@drawable/psw_icon"
+        android:drawableLeft="@drawable/psw_icon"
+        android:drawablePadding="10sp"
+        android:gravity="center_vertical"
+        android:hint="@string/et_new_psw_again"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingStart="10sp"
+        android:paddingLeft="10sp"
+        android:textColor="@color/colorEdit"
+        android:textColorHint="#a3a3a3"
+        tools:ignore="Autofill,RtlHardcoded,RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_marginStart="35sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginEnd="35sp"
+        android:background="@drawable/register_selector"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.xushengling.javaboxuegu.R;
 import com.xushengling.javaboxuegu.activity.LoginActivity;
+import com.xushengling.javaboxuegu.activity.SettingActivity;
 import com.xushengling.javaboxuegu.utils.AnalysisUtils;
 
 /**
@@ -32,7 +34,7 @@ public class MyInfoView {
     public MyInfoView(Activity content) {
         mContext = content;
         //为之后将 Layout 转化为 view 时用
-        mInflater = LayoutInflater.from(mContext);
+        mInflater = LayoutInflater.from(mContext) ;
     }
 
     private void createView() {
@@ -70,20 +72,16 @@ public class MyInfoView {
             }
         });
         rl_setting.setOnClickListener(i -> {
-            if (readLoginStatus()) {
-                if (!readLoginStatus()) {
-                    //跳转到设置界面
+            if (readLoginStatus()) mContext.startActivityForResult(new Intent(mContext, SettingActivity.class),1);
+            else Toast.makeText(mContext, "您还没登录，请先登录", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(mContext, "您还没登录，请先登录", Toast.LENGTH_SHORT).show();
-                }
-            }
         });
     }
 
     /**
      * 登录状态后设置我的界面
      */
-    public void setLoginParams(boolean isLogin) {
+    private void setLoginParams(boolean isLogin) {
         if (isLogin) {
             tv_user_name.setText(AnalysisUtils.readLoginUserName(mContext));
         } else {
@@ -108,13 +106,15 @@ public class MyInfoView {
         }
         return mCurrentView;
     }
-//    /**
-//     * 显示当前导航栏上方对应的 view 界面
-//     */
-//    public void showView(){
-//        if (mCurrentView == null){
-//            createView();
-//        }
-//        mCurrentView.setVisibility(View.VISIBLE);
-//    }
+
+
+    /**
+     * 显示当前导航栏上方对应的 view 界面
+     */
+    public void showView(){
+        if (mCurrentView == null){
+            createView();
+        }
+        mCurrentView.setVisibility(View.VISIBLE);
+    }
 }

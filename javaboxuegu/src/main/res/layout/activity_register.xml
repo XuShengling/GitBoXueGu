@@ -34,7 +34,7 @@
         android:paddingLeft="10sp"
         android:textColor="@color/colorEdit"
         android:textColorHint="#a3a3a3"
-        tools:ignore="Autofill,RtlSymmetry,TextFields"
+        tools:ignore="Autofill,RtlHardcoded,RtlSymmetry,TextFields"
         android:maxLines="1"/>
     <EditText
         android:id="@+id/pswEt"
@@ -48,13 +48,13 @@
         android:drawableLeft="@drawable/psw_icon"
         android:drawablePadding="10sp"
         android:gravity="center_vertical"
-        android:hint="@string/username"
+        android:hint="@string/et_psw"
         android:paddingStart="10sp"
         android:paddingLeft="10sp"
         android:textColor="@color/colorEdit"
         android:textColorHint="#a3a3a3"
         android:inputType="textPassword"
-        tools:ignore="Autofill,RtlSymmetry"
+        tools:ignore="Autofill,RtlHardcoded,RtlSymmetry"
         android:maxLines="1"/>
 
     <EditText
@@ -69,13 +69,13 @@
         android:drawableLeft="@drawable/psw_icon"
         android:drawablePadding="10sp"
         android:gravity="center_vertical"
-        android:hint="@string/username"
+        android:hint="@string/et_psw_psw"
         android:paddingStart="10sp"
         android:paddingLeft="10sp"
         android:textColor="@color/colorEdit"
         android:textColorHint="#a3a3a3"
         android:inputType="textPassword"
-        tools:ignore="Autofill,RtlSymmetry"
+        tools:ignore="Autofill,RtlHardcoded,RtlSymmetry"
         android:maxLines="1"/>
     <TextView
         android:id="@+id/registerBtn"

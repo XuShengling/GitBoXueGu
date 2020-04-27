@@ -6,28 +6,30 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.xushengling.myapplication.R
-import com.xushengling.myapplication.view.MyInfoView
+import com.xushengling.myapplication.base.BaseActivity
+import com.xushengling.myapplication.fragment.CourseFragment
+import com.xushengling.myapplication.fragment.ExercisesFragment
+import com.xushengling.myapplication.fragment.MyFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_title_bar.*
 import kotlin.system.exitProcess
 
-class MainActivity : AppCompatActivity(),View.OnClickListener{
+class MainActivity : BaseActivity(),View.OnClickListener{
     /**
      * 底部按钮栏
      */
     private lateinit var mButtonLayout: LinearLayout
-    private var mMyInfoView:MyInfoView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initView()
         initBottomBtn()
         setListener()
         setInitStarts()
+    }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_main
     }
 
     private fun initBottomBtn() {
@@ -58,7 +60,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
         }
     }
 
-    private fun initView() {
+    override fun initView() {
         mainTitleBar.setBackgroundColor(Color.parseColor("#30B4FF"))
         backTv.visibility = View.GONE
     }
@@ -135,14 +137,15 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
         when(viewIndex){
             0 ->{
                 //课程界面
+                replaceFragment(CourseFragment())
             }
             1 ->{
                 //习题界面
+                replaceFragment(ExercisesFragment())
             }
             2 ->{
                 //我的界面
-                if (mMyInfoView == null) main_body.addView(MyInfoView(this).view)
-                else mMyInfoView!!.view
+                replaceFragment(MyFragment())
 
             }
         }
@@ -184,9 +187,14 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
         editor.apply()
         editor.commit()
     }
-
-    private fun toast(value:String){
-        Toast.makeText(this,value,LENGTH_SHORT).show()
+    /**
+     * 修改 Fragment界面
+     */
+    private fun replaceFragment(fragment:Fragment){
+        val fragmentManager=supportFragmentManager
+        val transaction=fragmentManager.beginTransaction()
+        transaction.replace(R.id.main_body,fragment)
+        transaction.commit()
     }
 
 }

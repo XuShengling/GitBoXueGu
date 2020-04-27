@@ -15,7 +15,7 @@ public class AnalysisUtils {
      * 从 SharedPreferences 中读取登录用户名
      */
     public static String readLoginUserName(Context context){
-        SharedPreferences sp=context.getSharedPreferences("loginInfo",Context.MODE_PRIVATE);
+        SharedPreferences sp=context.getSharedPreferences("LoginInfo",Context.MODE_PRIVATE);
         return sp.getString("loginUserName","");
     }
 }

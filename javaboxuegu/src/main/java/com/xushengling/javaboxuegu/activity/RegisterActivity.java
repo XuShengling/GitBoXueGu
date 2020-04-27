@@ -1,35 +1,32 @@
 package com.xushengling.javaboxuegu.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.xushengling.javaboxuegu.R;
+import com.xushengling.javaboxuegu.base.BaseActivity;
 import com.xushengling.javaboxuegu.utils.MD5Utils;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
     private EditText mUserNameEt,mUserPswEt,mUserAgainEt;
     private String userName,psw,pswAgain;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        initView();
+    protected int getLayoutId() {
+        return R.layout.activity_register;
     }
 
-    private void initView() {
+    @Override
+    public void initView() {
         TextView mTitleTv = findViewById(R.id.titleTv);
-        mTitleTv.setText(R.string.user_login);
+        mTitleTv.setText(R.string.register_activity);
         TextView mBackBtn = findViewById(R.id.backTv);
         TextView mRegisterBtn = findViewById(R.id.registerBtn);
         mUserNameEt=findViewById(R.id.userNameEt);
@@ -41,26 +38,24 @@ public class RegisterActivity extends AppCompatActivity {
         mRegisterBtn.setOnClickListener(i ->{
             getEditString();
             if (TextUtils.isEmpty(userName)){
-                toast(getString(R.string.userName));
+                Toast(getString(R.string.userName));
             }else if (TextUtils.isEmpty(psw)){
-                toast(getString(R.string.psw));
+                Toast(getString(R.string.psw));
             }else if (TextUtils.isEmpty(pswAgain)){
-                toast(getString(R.string.spPswPsw));
+                Toast(getString(R.string.spPswPsw));
             }else if (!psw.equals(pswAgain)){
-                toast(getString(R.string.spPswPsw));
+                Toast(getString(R.string.spPswPsw));
             }else if (isExistUserName(userName)){
-              toast(getString(R.string.noUser));
+                Toast(getString(R.string.userNameRl));
             }else {
-                toast(getString(R.string.registerUser));
+                Toast(getString(R.string.registerUser));
                 saveRegisterInfo(userName,psw);
                 setResult(RESULT_OK,new Intent().putExtra(getString(R.string.userNameLogin),userName));
                 this.finish();
             }
         });
     }
-    private void toast(String value){
-        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
-    }
+
     private void getEditString(){
         userName=mUserNameEt.getText().toString().trim();
         psw=mUserPswEt.getText().toString().trim();
@@ -68,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private boolean isExistUserName(String userName){
         boolean has_userName=false;
-        SharedPreferences sp=getSharedPreferences(getString(R.string.loginInfo),MODE_PRIVATE);
+        SharedPreferences sp=getSharedPreferences("LoginInfo",MODE_PRIVATE);
         String spPsw=sp.getString(userName,"");
         if (!TextUtils.isEmpty(spPsw)){
             has_userName=true;
@@ -77,10 +72,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void saveRegisterInfo(String userName,String psw){
         String md5= MD5Utils.md5(psw);
-        SharedPreferences sp = getSharedPreferences(getString(R.string.loginInfo),MODE_PRIVATE);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor=sp.edit();
+        SharedPreferences sp = getSharedPreferences("LoginInfo",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
         editor.putString(userName,md5);
         editor.apply();
-        editor.commit();
     }
 }

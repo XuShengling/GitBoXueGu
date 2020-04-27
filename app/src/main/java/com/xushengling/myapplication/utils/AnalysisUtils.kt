@@ -16,6 +16,6 @@ object AnalysisUtils {
      */
     fun readLoginUserName(context: Context): String? {
         val sp = context.getSharedPreferences("loginInfo", Context.MODE_PRIVATE)
-        return sp.getString("LoginUserName", "")
+        return sp.getString("loginUserName", "")
     }
 }

@@ -1,14 +1,15 @@
 package com.xushengling.javaboxuegu.activity;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
+
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,18 +17,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xushengling.javaboxuegu.R;
-import com.xushengling.javaboxuegu.view.MyInfoView;
+import com.xushengling.javaboxuegu.base.BaseActivity;
+import com.xushengling.javaboxuegu.fragment.CourseFragment;
+import com.xushengling.javaboxuegu.fragment.ExercisesFragment;
+import com.xushengling.javaboxuegu.fragment.MyFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    /**
-     * 中间内容狂
-     */
-    private FrameLayout mBodyLayout;
-
+    FrameLayout mBodyLayout;
     /**
      * 底部按钮栏
      */
@@ -47,28 +46,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView iv_myInfo;
     private TextView tv_main_titer;
     private ConstraintLayout rl_title_bar;
-    public MyInfoView mMyInfoView;
 
-    @SuppressLint("SourceLockedOrientationActivity")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_main);
-        initView();
         initBottomBtn();
         setListener();
         setInitStarts();
     }
-    public <T extends View> T $(@IdRes int id) {
-        return getDelegate().findViewById(id);
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
-    private void initView() {
+
+    @Override
+    public void initView() {
         TextView tv_back = $(R.id.backTv);
         tv_main_titer = $(R.id.titleTv);
         tv_main_titer.setText(getText(R.string.main_activity));
         rl_title_bar = $(R.id.mainTitleBar);
-        rl_title_bar.setBackgroundColor(this.getResources().getColor(R.color.colorBar));
+        rl_title_bar.setBackgroundColor(this.getColor(R.color.colorBar));
         tv_back.setVisibility(View.GONE);
         initBodyLayout();
     }
@@ -87,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void initBodyLayout(){
         mBodyLayout=$(R.id.main_body);
+        replaceFragment(new CourseFragment());
     }
 
     @Override
@@ -119,15 +119,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 清楚底部选中的按钮
      */
     private void clearBottomImageState(){
-        tv_course.setTextColor(this.getResources().getColor(R.color.colorText));
-        tv_exercise.setTextColor(this.getResources().getColor(R.color.colorText));
-        tv_myInfo.setTextColor(this.getResources().getColor(R.color.colorText));
+        tv_course.setTextColor(this.getColor(R.color.colorText));
+        tv_exercise.setTextColor(this.getColor(R.color.colorText));
+        tv_myInfo.setTextColor(this.getColor(R.color.colorText));
         iv_course.setImageResource(R.drawable.main_course_icon);
         iv_exercise.setImageResource(R.drawable.main_exercises_icon);
         iv_myInfo.setImageResource(R.drawable.main_my_icon);
-        for (int i=0;i<mButtonLayout.getChildCount();i++){
-            mButtonLayout.getChildAt(i).setSelected(false);
-        }
+
     }
 
     /**
@@ -138,33 +136,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 0:
                 mCuresBtn.setSelected(true);
                 iv_course.setImageResource(R.drawable.main_course_icon_selected);
-                tv_course.setTextColor(this.getResources().getColor(R.color.colorTextSelected));
+                tv_course.setTextColor(this.getColor(R.color.colorTextSelected));
                 rl_title_bar.setVisibility(View.VISIBLE);
                 tv_main_titer.setText(R.string.main_activity);
                 break;
             case 1:
                 mExercisesBtn.setSelected(true);
                 iv_exercise.setImageResource(R.drawable.main_exercises_icon_selected);
-                tv_exercise.setTextColor(this.getResources().getColor(R.color.colorTextSelected));
+                tv_exercise.setTextColor(this.getColor(R.color.colorTextSelected));
                 rl_title_bar.setVisibility(View.VISIBLE);
                 tv_main_titer.setText(R.string.main_exercises_tv);
                 break;
             case 2:
                 mMyInfoBtn.setSelected(true);
                 iv_myInfo.setImageResource(R.drawable.main_my_icon_selected);
-                tv_myInfo.setTextColor(this.getResources().getColor(R.color.colorTextSelected));
+                tv_myInfo.setTextColor(this.getColor(R.color.colorTextSelected));
                 rl_title_bar.setVisibility(View.GONE);
                 break;
         }
     }
-    /**
-     * 移除不需要视图
-     */
-    private void removeAllView(){
-        for (int i = 0; i <mBodyLayout.getChildCount();i++){
-            mBodyLayout.getChildAt(i).setVisibility(View.GONE);
-        }
-    }
+
     /**
      * 设置界面view的初始化状态
      */
@@ -177,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 显示对应的界面
      */
     private void selectDisplayView(int index){
-        removeAllView();
+
         createView(index);
         setSelectedStatus(index);
     }
@@ -188,17 +179,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (viewIndex){
             case 0:
                 //课程界面
+                replaceFragment(new CourseFragment());
                 break;
             case 1:
                 //习题界面
+                replaceFragment(new ExercisesFragment());
                 break;
             case 2:
                 //我的界面
-                if (mMyInfoView == null) {
-                    mBodyLayout.addView(new MyInfoView(this).getView());
-                }else {
-                    mMyInfoView.getView();
-                }
+                replaceFragment(new MyFragment());
                 break;
         }
     }
@@ -208,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
             if ((System.currentTimeMillis() - exitTime) > 2000){
-                Toast.makeText(this, R.string.keyDown, Toast.LENGTH_SHORT).show();
+               Toast(getString(R.string.keyDown));
                 exitTime = System.currentTimeMillis();
             }else { this.finish();
             if (readLoginStatus()){
@@ -224,19 +213,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 获取 SharedPreferences 中的登录信息
      */
     private boolean readLoginStatus(){
-        SharedPreferences sp=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        SharedPreferences sp=getSharedPreferences("LoginInfo",MODE_PRIVATE);
         return sp.getBoolean("isLogin",false);
     }
     /**
      * 清除 SharedPreferences 中的登录状态
      */
+
     private void clearLoginStatus(){
-        SharedPreferences sp=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        SharedPreferences sp=getSharedPreferences("LoginInfo",MODE_PRIVATE);
         SharedPreferences.Editor editor=sp.edit();
         editor.putBoolean("isLogin",false);
         editor.putString("loginUserName","");
         editor.apply();
-        editor.commit();
     }
 
     @Override
@@ -250,10 +239,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 clearBottomImageState();
                 selectDisplayView(0);
             }
-            if (mMyInfoView != null){
-                //登录成功或退出登录时根据 isLogin 设置界面
-                mMyInfoView.setLoginParams(isLogin);
-            }
         }
+    }
+    /**
+     * 修改 Fragment界面
+     */
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction transaction=fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_body,fragment);
+        transaction.commit();
     }
 }

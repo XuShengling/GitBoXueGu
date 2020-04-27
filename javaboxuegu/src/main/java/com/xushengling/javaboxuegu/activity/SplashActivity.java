@@ -4,30 +4,22 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
+import android.os.Handler;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.xushengling.javaboxuegu.R;
+import com.xushengling.javaboxuegu.base.BaseActivity;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
+    protected Handler mHandler = new Handler();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_splash);
-        initView();
+    protected int getLayoutId() {
+        return R.layout.activity_splash;
     }
 
     @SuppressLint("SetTextI18n")
-    private void initView() {
+    @Override
+    public void initView() {
         TextView mVersionTv = findViewById(R.id.versionTv);
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -37,16 +29,19 @@ public class SplashActivity extends AppCompatActivity {
             mVersionTv.setText("V");
         }
 
-        //此界面延时三秒后跳转
-        Timer timer = new Timer();
-        //TimerTask指定时间内执行task
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                SplashActivity.this.finish();
-            }
-        };
-        timer.schedule(task, 3000);
+        mHandler=new Handler();
+        mHandler.postDelayed(() -> {
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            SplashActivity.this.finish();
+        },3000);
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mHandler !=null){
+            mHandler.removeCallbacksAndMessages(null);
+            mHandler = null;
+        }
+    }
+
 }

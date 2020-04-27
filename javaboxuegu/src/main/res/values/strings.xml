@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitBoXueGu</string>
+    <string name="app_name">JavaBoXueGu</string>
     <string name="username">请输入用户名</string>
     <string name="userRegister">注   册</string>
     <string name="userPsw">请输入密码</string>
@@ -26,4 +26,18 @@
     <string name="security_setting_tv">设置密保</string>
     <string name="exit_login_tv">退出登录</string>
     <string name="setting">设置</string>
+    <string name="register_activity">注册</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="et_psw">请输入密码</string>
+    <string name="et_psw_psw">请再次输入密码</string>
+    <string name="et_original_psw">请输入原始密码</string>
+    <string name="et_psw_again">请输入新密码</string>
+    <string name="et_new_psw_again">请再次输入新密码</string>
+    <string name="save">保存</string>
+    <string name="userNameRl">用户名已存在</string>
+    <string name="name">您的用户名是？</string>
+    <string name="user_name">请输入您的用户名</string>
+    <string name="user">您的名字是？</string>
+    <string name="name_user">请输入要验证的姓名</string>
+    <string name="validate">验证</string>
 </resources>

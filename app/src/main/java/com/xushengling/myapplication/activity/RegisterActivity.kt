@@ -6,25 +6,21 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Toast
 import com.xushengling.myapplication.R
+import com.xushengling.myapplication.base.BaseActivity
 import com.xushengling.myapplication.utils.MD5Utils
 
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.main_title_bar.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity :BaseActivity(){
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-        initView()
+    override fun getLayoutId(): Int {
+        return R.layout.activity_register
     }
 
-    private fun initView() {
+    override fun initView() {
         titleTv.text=getString(R.string.user_login)
         mainTitleBar.setBackgroundColor(Color.TRANSPARENT)
         backTv.setOnClickListener { this.finish() }
@@ -77,8 +73,5 @@ class RegisterActivity : AppCompatActivity() {
         editor.putString(userName,md5)
         editor.apply()
         editor.commit()
-    }
-    private fun toast(value:String ){
-        Toast.makeText(this,value, Toast.LENGTH_SHORT).show()
     }
 }

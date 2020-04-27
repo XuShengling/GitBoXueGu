@@ -3,24 +3,20 @@ package com.xushengling.myapplication.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Toast
 import com.xushengling.myapplication.R
+import com.xushengling.myapplication.base.BaseActivity
 import com.xushengling.myapplication.utils.MD5Utils
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.main_title_bar.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        initView()
+    override fun getLayoutId(): Int {
+        return R.layout.activity_login
     }
 
-    private fun initView() {
+    override fun initView() {
         titleTv.text=getString(R.string.user_login)
         backTv.setOnClickListener { this.finish()}
         registerTv.setOnClickListener {
@@ -28,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
                 RegisterActivity::class.java),1)
         }
         findPswTv.setOnClickListener {
-            //未创建
+            startActivity(Intent(this,FindPswActivity::class.java))
         }
         btn_login.setOnClickListener {
             val userName=et_user_name.text.toString().trim()
@@ -63,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
     private fun saveLoginStatus(states:Boolean,userName:String){
         val editor=getSharedPreferences("loginInfo", Context.MODE_PRIVATE).edit()
         editor.putBoolean("isLogin",states)
-        editor.putString("LoginUserName",userName)
+        editor.putString("loginUserName",userName)
         editor.apply()
         editor.commit()
     }
@@ -77,10 +73,6 @@ class LoginActivity : AppCompatActivity() {
                 et_user_name.setSelection(userName!!.length)
             }
         }
-    }
-
-    private fun toast(value:String ){
-        Toast.makeText(this,value, Toast.LENGTH_SHORT).show()
     }
 }
 
