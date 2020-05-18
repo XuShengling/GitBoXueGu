@@ -11,12 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="AllowBackup">
-        <activity android:name=".activity.FindPswActivity">
-
-        </activity>
-        <activity android:name=".activity.ModifyPswActivity">
-
-        </activity>
+        <activity android:name=".activity.ChangeUserInfoActivity"/>
+        <activity android:name=".activity.UserInfoActivity" />
+        <activity android:name=".activity.FindPswActivity" />
+        <activity android:name=".activity.ModifyPswActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity

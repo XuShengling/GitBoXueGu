@@ -14,7 +14,13 @@
         android:layout_height="0sp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/main_btn_bar"
-        app:layout_constraintTop_toBottomOf="@+id/mainTitleBar" />
+        app:layout_constraintTop_toBottomOf="@+id/mainTitleBar" >
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/main_btn_bar"

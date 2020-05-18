@@ -5,6 +5,7 @@ import android.content.Intent
 import com.xushengling.myapplication.R
 import com.xushengling.myapplication.activity.LoginActivity
 import com.xushengling.myapplication.activity.SettingActivity
+import com.xushengling.myapplication.activity.UserInfoActivity
 import com.xushengling.myapplication.base.BaseFragment
 import com.xushengling.myapplication.utils.AnalysisUtils
 import kotlinx.android.synthetic.main.my_fragment.*
@@ -23,6 +24,7 @@ class MyFragment :BaseFragment(){
         ll_head.setOnClickListener {
             if(readLoginStatus()){
                 //跳转至个人资料
+                startActivity(Intent(activity,UserInfoActivity::class.java))
             }else{
                 startActivity(Intent(activity,LoginActivity::class.java))
             }

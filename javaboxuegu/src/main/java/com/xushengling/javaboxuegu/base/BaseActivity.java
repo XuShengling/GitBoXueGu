@@ -42,8 +42,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected <T extends View> T $(@IdRes int id) {
         return findViewById(id);
     }
-protected void Toast(String value){
-    Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
-}
+
+    protected void Toast(String value) {
+        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+    }
 
 }

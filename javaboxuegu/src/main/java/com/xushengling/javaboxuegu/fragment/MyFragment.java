@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.xushengling.javaboxuegu.R;
 import com.xushengling.javaboxuegu.activity.LoginActivity;
 import com.xushengling.javaboxuegu.activity.SettingActivity;
+import com.xushengling.javaboxuegu.activity.UserInfoActivity;
 import com.xushengling.javaboxuegu.base.BaseFragment;
 import com.xushengling.javaboxuegu.utils.AnalysisUtils;
 
@@ -41,9 +42,10 @@ public class MyFragment extends BaseFragment {
         tv_user_name=$(R.id.tv_user_name);
         setLoginParams(readLoginStatus());
         ll_head.setOnClickListener(i ->{
-            if (!readLoginStatus()) {
+            if (readLoginStatus()) {
                 //跳转至个人资料
-//            }else {
+                startActivity(new Intent(getActivity(),UserInfoActivity.class));
+            }else {
                 startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });

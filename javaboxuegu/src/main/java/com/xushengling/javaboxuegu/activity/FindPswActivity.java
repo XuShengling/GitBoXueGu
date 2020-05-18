@@ -14,7 +14,7 @@ import com.xushengling.javaboxuegu.utils.AnalysisUtils;
 import com.xushengling.javaboxuegu.utils.MD5Utils;
 
 public class FindPswActivity extends BaseActivity {
-    private EditText et_validate_name, et_user_name;
+    private EditText etValidateName, et_user_name;
     private String From;
     private TextView tv_reset_psw;
 
@@ -29,7 +29,7 @@ public class FindPswActivity extends BaseActivity {
         From = getIntent().getStringExtra("From");
         TextView tv_main_title = $(R.id.titleTv);
         TextView tv_back = $(R.id.backTv);
-        et_validate_name = $(R.id.et_validate_name);
+        etValidateName = $(R.id.et_validate_name);
         Button btn_validate = $(R.id.btn_validate);
         tv_reset_psw = $(R.id.tv_validate_psw);
         et_user_name = $(R.id.et_user_name);
@@ -43,7 +43,7 @@ public class FindPswActivity extends BaseActivity {
         }
         tv_back.setOnClickListener(i -> finish());
         btn_validate.setOnClickListener(i -> {
-            String validateName = et_validate_name.getText().toString().trim();
+            String validateName = etValidateName.getText().toString().trim();
             if ("security".equals(From)) {
                 if (TextUtils.isEmpty(validateName)) {
                     Toast("请输入要验证的姓名");

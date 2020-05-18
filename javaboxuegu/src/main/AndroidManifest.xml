@@ -11,24 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="AllowBackup">
-        <activity android:name=".activity.FindPswActivity">
-
-        </activity>
-        <activity android:name=".activity.ModifyPswActivity">
-
-        </activity>
-        <activity android:name=".activity.SettingActivity">
-
-        </activity>
-        <activity android:name=".activity.LoginActivity">
-
-        </activity>
+        <activity android:name=".activity.ChangeUserInfoActivity"/>
+        <activity android:name=".activity.UserInfoActivity" />
+        <activity android:name=".activity.FindPswActivity" />
+        <activity android:name=".activity.ModifyPswActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.LoginActivity" />
         <activity
             android:name=".activity.RegisterActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-
-        </activity>
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,9 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 </manifest>

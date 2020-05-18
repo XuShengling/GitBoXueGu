@@ -1,18 +1,22 @@
 package com.xushengling.javaboxuegu.activity;
 
+//import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+//import androidx.viewpager.widget.PagerAdapter;
+//import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+//import android.view.LayoutInflater;
 import android.view.View;
+//import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,8 +28,13 @@ import com.xushengling.javaboxuegu.fragment.CourseFragment;
 import com.xushengling.javaboxuegu.fragment.ExercisesFragment;
 import com.xushengling.javaboxuegu.fragment.MyFragment;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+//import java.util.ArrayList;
+//import java.util.List;
 
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+//    View view1, view2, view3;
+//    ViewPager viewPager;
+//    List<View> viewList;
     FrameLayout mBodyLayout;
     /**
      * 底部按钮栏
@@ -63,6 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
+//        initViewPager();
         TextView tv_back = $(R.id.backTv);
         tv_main_titer = $(R.id.titleTv);
         tv_main_titer.setText(getText(R.string.main_activity));
@@ -71,6 +81,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tv_back.setVisibility(View.GONE);
         initBodyLayout();
     }
+
+//    private void initViewPager() {
+//        viewPager=findViewById(R.id.viewpager);
+//        LayoutInflater inflater=getLayoutInflater();
+//        view1=inflater.inflate(R.layout.course_fragment,null);
+//        view2=inflater.inflate(R.layout.exercises_fragment,null);
+//        view3=inflater.inflate(R.layout.my_fragment,null);
+//
+//        viewList=new ArrayList<>();
+//        viewList.add(view1);
+//        viewList.add(view2);
+//        viewList.add(view3);
+//
+//        PagerAdapter pagerAdapter=new PagerAdapter() {
+//            @Override
+//            public int getCount() {
+//                return viewList.size();
+//            }
+//
+//            @Override
+//            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+//                return view==object;
+//            }
+//
+//            @NonNull
+//            @Override
+//            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+//                container.addView(viewList.get(position));
+//                return viewList.get(position);
+//            }
+//
+//            @Override
+//            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+//                container.removeView(viewList.get(position));
+//            }
+//        };
+//        viewPager.setAdapter(pagerAdapter);
+//    }
 
     private void initBottomBtn() {
         mButtonLayout=$(R.id.main_btn_bar);
